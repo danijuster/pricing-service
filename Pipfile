@@ -13,7 +13,7 @@ pymongo = "*"
 dataclasses = "*"
 passlib = "*"
 python-dotenv = "*"
-uWSGI = "*"
+uwsgi = "*"
 
 
 [requires]
