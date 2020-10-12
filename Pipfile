@@ -13,6 +13,7 @@ pymongo = "*"
 dataclasses = "*"
 passlib = "*"
 python-dotenv = "*"
+uwsgi = "*"
 
 [requires]
 python_version = "3.7"
