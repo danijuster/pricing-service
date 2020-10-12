@@ -14,7 +14,7 @@ dataclasses = "*"
 passlib = "*"
 python-dotenv = "*"
 uwsgi = "*"
-
+flask-gunicorn = "*"
 
 [requires]
 python_version = "3.7"
