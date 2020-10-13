@@ -14,7 +14,7 @@ app.secret_key = 'q1w2e3r4'
 app.config.update(
     ADMIN=os.environ.get('ADMIN')
 )
-
+print(os.environ.get('DATABASE_URL'))
 Model.initialize(MongoDatabase)
 
 
