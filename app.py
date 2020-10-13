@@ -1,5 +1,8 @@
 import os
 from flask import Flask, render_template
+
+from common.MongoDatabase import MongoDatabase
+from models.model import Model
 from views.alerts import alert_blueprint
 from views.stores import store_blueprint
 from views.users import user_blueprint
@@ -11,6 +14,8 @@ app.secret_key = 'q1w2e3r4'
 app.config.update(
     ADMIN=os.environ.get('ADMIN')
 )
+
+Model.initialize(MongoDatabase)
 
 
 @app.route('/')
