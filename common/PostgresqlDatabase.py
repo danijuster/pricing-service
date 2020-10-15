@@ -18,10 +18,16 @@ class PostgresqlDatabase(DataStore):
             params = config()
 
             # override host with environment variable instead of config ini file
-            params['host'] = os.environ.get('DATABASE_URL', None)
+            if os.environ.get('DATABASE_URL', None) == params['host']:
+                # local environment
+                conn = psycopg2.connect(**params, options="-c search_path=pricing_app,dbo,public")
+            else:
+                # remote environment
+                conn = psycopg2.connect(os.environ.get('DATABASE_URL', None), sslmode='require',
+                                        options="-c search_path=pricing_app,dbo,public")
 
             # connect to the PostgreSQL server
-            conn = psycopg2.connect(**params, options="-c search_path=pricing_app,dbo,public")
+
 
             return conn
         except (Exception, psycopg2.DatabaseError) as error:
