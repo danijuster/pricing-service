@@ -1,7 +1,8 @@
 import os
 from flask import Flask, render_template
-
+import config
 from common.MongoDatabase import MongoDatabase
+from common.PostgresqlDatabase import PostgresqlDatabase
 from models.model import Model
 from views.alerts import alert_blueprint
 from views.stores import store_blueprint
@@ -14,8 +15,13 @@ app.secret_key = 'q1w2e3r4'
 app.config.update(
     ADMIN=os.environ.get('ADMIN')
 )
-print(os.environ.get('DATABASE_URL'))
-Model.initialize(MongoDatabase)
+
+db_conf = config.config(section='database')
+
+if db_conf['type'] == "postgresql":
+    Model.initialize(PostgresqlDatabase)
+else:
+    Model.initialize(MongoDatabase)
 
 
 @app.route('/')

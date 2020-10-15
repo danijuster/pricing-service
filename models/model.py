@@ -9,6 +9,7 @@ class Model(metaclass=ABCMeta):
     collection: str
     _id: str
     datastore: DataStore
+    datastore_name: str
 
     def __init__(self, *args, **kwargs):
         pass
@@ -16,6 +17,7 @@ class Model(metaclass=ABCMeta):
     @classmethod
     def initialize(cls: Type[T], datastore: DataStore):
         cls.datastore = datastore
+        cls.datastore_name = repr(cls.datastore).split('.')[-1][:-2]
 
     def save_to_mongo(self):
         self.datastore.update(self.collection, {"_id": self._id}, self.json())

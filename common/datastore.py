@@ -41,3 +41,7 @@ class DataStore(metaclass=ABCMeta):
     @abstractmethod
     def remove(collection: str, query: Dict) -> None:
         raise NotImplementedError
+
+    @classmethod
+    def get_name(cls):
+        return repr(cls).split('.')[-1][:-2]

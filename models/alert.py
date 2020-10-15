@@ -35,7 +35,7 @@ class Alert(Model):
 
     def notify_if_price_reached(self):
         if self.item.price < self.price_limit:
-            print(f"Item {self.item} has reached a price under {self.price_limit}. Latest price: {self.item.price}.")
+            # print(f"Item {self.item} has reached a price under {self.price_limit}. Latest price: {self.item.price}.")
             Mailgun.send_mail(
                 [self.user_email],
                 f'Notification for {self.name}',

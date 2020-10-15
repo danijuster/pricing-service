@@ -4,6 +4,7 @@ from common.datastore import DataStore
 
 
 class MongoDatabase(DataStore):
+    name = 'MongoDatabase'
     URI = "mongodb://127.0.0.1:27017/pricing"
     DATABASE = pymongo.MongoClient(URI).get_database()
 
