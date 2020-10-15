@@ -25,7 +25,7 @@ class PostgresqlDatabase(DataStore):
 
             return conn
         except (Exception, psycopg2.DatabaseError) as error:
-            raise Exception('Could not create connection to postgresql server')
+            raise Exception('Could not create connection to postgresql server with settings: ' + str(params))
 
     @staticmethod
     def insert(collection: str, data: Dict):
