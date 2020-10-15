@@ -15,9 +15,10 @@ def register_user():
         try:
             User.register_user(email, password)
             session['email'] = email
-            return email
+            return redirect(url_for('alerts.index'))
         except UserErrors.UserError as e:
-            return e.message
+            flash(e.message, 'danger')
+            return render_template('users/login.html')
 
     return render_template('users/register.html')
 
