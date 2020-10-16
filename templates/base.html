@@ -15,11 +15,27 @@
         <div id="navbarNavAltMarkup" class="collapse navbar-collapse">
             <div class="navbar-nav">
                 <a class="nav-item nav-link" href="{{ url_for('stores.index') }}">Stores</a>
-                <a class="nav-item nav-link" href="{{ url_for('alerts.index') }}">Alerts</a>
-                <a class="nav-item nav-link" href="{{ url_for('users.login_user') }}">Login</a>
-                <a class="nav-item nav-link" href="{{ url_for('users.register_user') }}">Sign up</a>
+                {% if session['email'] %}
+                    <a class="nav-item nav-link" href="{{ url_for('alerts.index') }}">Alerts</a>
+                <a class="nav-item nav-link" href="{{ url_for('users.logout') }}">Log-out</a>
+                {% else %}
+                    <a class="nav-item nav-link" href="{{ url_for('users.login_user') }}">Login</a>
+                    <a class="nav-item nav-link" href="{{ url_for('users.register_user') }}">Sign up</a>
+                {% endif %}
             </div>
         </div>
+<!--        <div id="navbarNavAltMarkup" class="collapse navbar-collapse">-->
+<!--            <div class="navbar-nav">-->
+<!--                <a class="nav-item nav-link" href="{{ url_for('stores.index') }}">Stores</a>-->
+<!--                {% if session['email'] %}-->
+<!--                    <a class="nav-item nav-link" href="{{ url_for('alerts.index') }}"><span class="glyphicon glyphicon-user"></span>Alerts</a>-->
+<!--                <a class="nav-item nav-link" href="{{ url_for('users.logout') }}"><span class="glyphicon glyphicon-log-out"></span> Log-out</a>-->
+<!--                {% else %}-->
+<!--                    <a class="nav-item nav-link" href="{{ url_for('users.login_user') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a>-->
+<!--                    <a class="nav-item nav-link" href="{{ url_for('users.register_user') }}"><span class="glyphicon glyphicon-user"></span>Sign up</a>-->
+<!--                {% endif %}-->
+<!--            </div>-->
+<!--        </div>        -->
     </nav>
 
     {% with messages = get_flashed_messages(with_categories=true) %}
