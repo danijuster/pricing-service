@@ -7,7 +7,10 @@ from models.model import Model
 from views.alerts import alert_blueprint
 from views.stores import store_blueprint
 from views.users import user_blueprint
+from logger import logger
 
+
+logger.debug('Initializing app')
 
 app = Flask(__name__)
 app.secret_key = 'q1w2e3r4'
@@ -15,6 +18,8 @@ app.secret_key = 'q1w2e3r4'
 app.config.update(
     ADMIN=os.environ.get('ADMIN')
 )
+
+logger.debug(app.config['ADMIN'])
 
 db_conf = config.config(section='database')
 

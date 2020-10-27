@@ -1,0 +1,5 @@
+2020-10-27 15:57:20,223 - pricing_service - DEBUG - Initializing app
+2020-10-27 15:57:45,858 - pricing_service - DEBUG - Initializing app
+2020-10-27 15:57:45,860 - pricing_service - DEBUG - None
+2020-10-27 15:57:47,026 - pricing_service - DEBUG - Initializing app
+2020-10-27 15:57:47,028 - pricing_service - DEBUG - dani.juster@gmail.com
